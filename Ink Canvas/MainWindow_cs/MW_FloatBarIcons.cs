@@ -768,7 +768,7 @@ namespace Ink_Canvas
                         }
                         else
                         {
-                            pointPPT = newPos;
+                            pointPPT.Value = newPos;
                         }
                     }
                     else
@@ -780,7 +780,7 @@ namespace Ink_Canvas
                         }
                         else
                         {
-                            pointDesktop = newPos;
+                            pointDesktop.Value = newPos;
                         }
                     }
                 }
