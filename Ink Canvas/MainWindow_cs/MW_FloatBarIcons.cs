@@ -81,8 +81,8 @@ namespace Ink_Canvas
         bool isDragDropInEffect = false;
         Point pos = new Point();
         Point downPos = new Point();
-        Point pointDesktop = new Point(-1, -1); //用于记录上次在桌面时的坐标
-        Point pointPPT = new Point(-1, -1); //用于记录上次在PPT中的坐标
+        Point? pointDesktop = new Point(-1, -1); //用于记录上次在桌面时的坐标
+        Point? pointPPT = new Point(-1, -1); //用于记录上次在PPT中的坐标
 
         void SymbolIconEmoji_MouseMove(object sender, MouseEventArgs e)
         {
@@ -763,15 +763,10 @@ namespace Ink_Canvas
                     {
                         if (pointPPT.X != -1 || pointPPT.Y != -1)
                         {
-                            // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
-                            if (Math.Abs(pointPPT.Y - newPos.Y) > 50)
-                            {
-                                newPos = pointPPT;
-                            }
-                            else
-                            {
-                                pointPPT = newPos;
-                            }
+                        // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
+                        if ((pointPPT.X != -1 || pointPPT.Y != -1) && Math.Abs(pointPPT.Y - newPos.Y) > 50 && pointPPT.HasValue)
+                        {
+                            newPos = pointPPT;
                         }
                         else
                         {
@@ -780,17 +775,10 @@ namespace Ink_Canvas
                     }
                     else
                     {
-                        if (pointDesktop.X != -1 || pointDesktop.Y != -1)
+                        // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
+                        if ((pointDesktop.X != -1 || pointDesktop.Y != -1) && Math.Abs(pointDesktop.Y - newPos.Y) > 50 && pointDesktop.HasValue)
                         {
-                            // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
-                            if (Math.Abs(pointDesktop.Y - newPos.Y) > 50)
-                            {
-                                newPos = pointDesktop;
-                            }
-                            else
-                            {
-                                pointDesktop = newPos;
-                            }
+                            newPos = pointDesktop;
                         }
                         else
                         {
