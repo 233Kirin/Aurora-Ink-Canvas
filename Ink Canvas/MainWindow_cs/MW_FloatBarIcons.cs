@@ -761,12 +761,10 @@ namespace Ink_Canvas
                 {
                     if (BtnPPTSlideShowEnd.Visibility == Visibility.Visible)
                     {
-                        if (pointPPT.X != -1 || pointPPT.Y != -1)
-                        {
                         // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
-                        if ((pointPPT.X != -1 || pointPPT.Y != -1) && Math.Abs(pointPPT.Y - newPos.Y) > 50 && pointPPT.HasValue)
+                        if (pointPPT.HasValue && Math.Abs(pointPPT.Y - newPos.Y) > 50)
                         {
-                            newPos = pointPPT;
+                            newPos = pointPPT.Value;
                         }
                         else
                         {
@@ -776,9 +774,9 @@ namespace Ink_Canvas
                     else
                     {
                         // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
-                        if ((pointDesktop.X != -1 || pointDesktop.Y != -1) && Math.Abs(pointDesktop.Y - newPos.Y) > 50 && pointDesktop.HasValue)
+                        if (pointDesktop.HasValue && Math.Abs(pointPPT.Y - newPos.Y) > 50)
                         {
-                            newPos = pointDesktop;
+                            newPos = pointDesktop.Value;
                         }
                         else
                         {
@@ -786,7 +784,7 @@ namespace Ink_Canvas
                         }
                     }
                 }
-
+            
                 // 设置一个合理的起始位置，然后播放平滑动画
                 // 如果浮动栏之前是隐藏状态，从屏幕底部开始动画
                 Thickness fromMargin;
