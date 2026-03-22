@@ -33,13 +33,25 @@ namespace Ink_Canvas
         {
             InitializeComponent();
 
-            Loaded += (s, e) =>
+            ContentRendered += async (s, e) =>
             {
-                Dispatcher.BeginInvoke(new Action(() =>
-                {
-                    ViewboxFloatingBarMarginAnimation();
-                }), DispatcherPriority.Loaded);
+                await Task.Delay(50);
+
+                double screenWidth = SystemParameters.PrimaryScreenWidth;
+                double screenHeight = SystemParameters.PrimaryScreenHeight;
+
+                double width = ViewboxFloatingBar.ActualWidth;
+                double height = ViewboxFloatingBar.ActualHeight;
+
+                double x = (screenWidth - width) / 2;
+                double y = screenHeight - 100;
+
+                ViewboxFloatingBar.Margin = new Thickness(x, y, 0, 0);
+
+                // 再调用动画（可选）
+                ViewboxFloatingBarMarginAnimation();
             };
+
             // 将视频控制条嵌入到 BorderStrokeSelectionControl 内部容器
             try
             {
