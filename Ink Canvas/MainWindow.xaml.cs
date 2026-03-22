@@ -33,6 +33,13 @@ namespace Ink_Canvas
         {
             InitializeComponent();
 
+            Loaded += (s, e) =>
+            {
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    ViewboxFloatingBarMarginAnimation();
+                }), DispatcherPriority.Loaded);
+            };
             // 将视频控制条嵌入到 BorderStrokeSelectionControl 内部容器
             try
             {
