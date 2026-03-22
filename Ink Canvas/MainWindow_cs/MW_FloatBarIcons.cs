@@ -81,8 +81,8 @@ namespace Ink_Canvas
         bool isDragDropInEffect = false;
         Point pos = new Point();
         Point downPos = new Point();
-        Point? pointDesktop = new Point(); //用于记录上次在桌面时的坐标
-        Point? pointPPT = new Point(); //用于记录上次在PPT中的坐标
+        Point? pointDesktop = new Point(-1, -1); //用于记录上次在桌面时的坐标
+        Point? pointPPT = new Point(-1, -1); //用于记录上次在PPT中的坐标
 
         void SymbolIconEmoji_MouseMove(object sender, MouseEventArgs e)
         {
