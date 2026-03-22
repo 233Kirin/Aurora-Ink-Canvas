@@ -750,11 +750,11 @@ namespace Ink_Canvas
 
                 double floatingBarWidth = baseWidth * ViewboxFloatingBarScaleTransform.ScaleX;
 
-                // 水平居中计算，与community-beta版本一致
+                // 水平居中计算，与Community Edition一致
                 newPos.X = (screenWidth - floatingBarWidth) / 2;
 
-                // Y坐标计算，与Artistry版本一致
-                newPos.Y = screenHeight - MarginFromEdge * ((ViewboxFloatingBarScaleTransform.ScaleY == 1) ? 1 : 0.9);
+                // Y坐标计算，与Community Edition一致
+                newPos.Y = screenHeight - MarginFromEdge * ViewboxFloatingBarScaleTransform.ScaleY;
 
                 // 自动吸附功能：如果之前保存的位置偏离较大（说明用户移动过），恢复到之前的位置
                 if (MarginFromEdge != -60)
