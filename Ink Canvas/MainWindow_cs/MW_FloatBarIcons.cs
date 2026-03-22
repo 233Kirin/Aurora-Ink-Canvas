@@ -801,7 +801,7 @@ namespace Ink_Canvas
                 {
                     Duration = TimeSpan.FromSeconds(0.5),
                     From = fromMargin,
-                    To = new Thickness(newPos.X, newPos.Y, -2000, -200),
+                    To = new Thickness(newPos.X, newPos.Y, 0, 0),
                     EasingFunction = new CircleEase()
                 };
                 ViewboxFloatingBar.BeginAnimation(FrameworkElement.MarginProperty, marginAnimation);
@@ -811,7 +811,7 @@ namespace Ink_Canvas
 
             await Dispatcher.InvokeAsync(() =>
             {
-                ViewboxFloatingBar.Margin = new Thickness(newPos.X, newPos.Y, -2000, -200);
+                ViewboxFloatingBar.Margin = new Thickness(newPos.X, newPos.Y, 0, 0);
                 pos = newPos;
                 // 折叠时隐藏浮动栏
                 if (isFloatingBarFolded)
