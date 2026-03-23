@@ -761,27 +761,29 @@ namespace Ink_Canvas
                 {
                     if (BtnPPTSlideShowEnd.Visibility == Visibility.Visible)
                     {
+                        pointPPT = newPos;
                         // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
-                        if (pointPPT.HasValue && Math.Abs(pointPPT.Value.Y - newPos.Y) > 50)
-                        {
-                            newPos = pointPPT.Value;
-                        }
-                        else
-                        {
-                            pointPPT = newPos;
-                        }
+                        //if (pointPPT.HasValue && Math.Abs(pointPPT.Value.Y - newPos.Y) > 50)
+                        //{
+                        //    newPos = pointPPT.Value;
+                        //}
+                        //else
+                        //{
+                        //    pointPPT = newPos;
+                        //}
                     }
                     else
                     {
+                        pointDesktop = newPos;
                         // 检查Y坐标偏离是否超过50像素，如果偏离大则使用之前保存的位置
-                        if (pointDesktop.HasValue && Math.Abs(pointDesktop.Value.Y - newPos.Y) > 50)
-                        {
-                            newPos = pointDesktop.Value;
-                        }
-                        else
-                        {
-                            pointDesktop = newPos;
-                        }
+                        //if (pointDesktop.HasValue && Math.Abs(pointDesktop.Value.Y - newPos.Y) > 50)
+                        //{
+                        //    newPos = pointDesktop.Value;
+                        //}
+                        //else
+                        //{
+                        //    pointDesktop = newPos;
+                        //}
                     }
                 }
             
